@@ -17,53 +17,60 @@ public class CreatNewPasteOnPastebin extends AbstractClassForPastebin{
     private String syntaxName = "Bash";
 
 
-    private String areaNameXPath = "//textarea[@name='paste_code']";
-    private String selectNameXPath = "//select[@name='paste_expire_date']";
-    private String pasteNameXPath = "//input[@name='paste_name']";
-    private String syntaxHighlightingXPath = "//select[@name='paste_format']";
+    @FindBy (xpath = "//textarea[@name='PostForm[text]']")
+    WebElement areaForNewPaste;
 
-    @FindBy (xpath = "//textarea[@name='paste_code']")
-    private WebElement textAreaForNewPaste;
+    @FindBy (xpath = "//select[@name='PostForm[expiration]']/parent::div")
+    WebElement pasteExpiration;
 
-    @FindBy (xpath = "//select[@name='paste_expire_date']")
-    private Select selectPasteExpiration;
+    @FindBy (xpath = "//li[text()='10 Minutes']")
+    WebElement pasteExpiration10Minutes;
 
-    @FindBy (xpath = "//select[@name='paste_expire_date']")
-    private Select selectSyntaxHighlighting;
+    @FindBy (xpath = "//select[@name='PostForm[format]']/parent::div")
+    WebElement syntaxHighlighting;
 
-    @FindBy (xpath = "//input[@name='paste_name']")
-    private WebElement pasteNameForNewPaste;
+    @FindBy (xpath = "//li[text()='Bash']")
+    WebElement syntaxHighlightingBash;
 
-    @FindBy(xpath = "//input[@type='submit']")
-    private WebElement creatNewPasteBtn;
+    @FindBy (xpath = "//input[@name='PostForm[name]']")
+    WebElement pasteNameForNewPaste;
+
+    @FindBy(xpath = "//button[contains(text(), Create)]")
+    WebElement createNewPasteBtn;
 
     public CreatNewPasteOnPastebin(WebDriver driver) {
         super(driver);
     }
     public CreatNewPasteOnPastebin enterCodeOnPastebin() {
         driver.get(webSite);
-        driver.findElement(By.xpath(areaNameXPath));
-        textAreaForNewPaste.sendKeys(areaName);
+        areaForNewPaste.sendKeys(areaName);
         return this;
     }
 
     public CreatNewPasteOnPastebin syntaxHighlighting() {
-        selectSyntaxHighlighting = new Select(driver.findElement(By.xpath(syntaxHighlightingXPath)));
-        selectSyntaxHighlighting.selectByVisibleText(syntaxName);
+        selectOptionInSelect(syntaxHighlighting, syntaxHighlightingBash);
         return this;
     }
 
 
     public CreatNewPasteOnPastebin checkThe10Minutes() {
-        selectPasteExpiration = new Select(driver.findElement(By.xpath(selectNameXPath)));
-        selectPasteExpiration.selectByVisibleText(selectPaste);
+        selectOptionInSelect(pasteExpiration, pasteExpiration10Minutes);
         return this;
     }
 
     public CreatNewPasteOnPastebin insertPasteNameAndCreatPaste() {
         pasteNameForNewPaste.sendKeys(pasteName);
-        creatNewPasteBtn.click();
+        createNewPasteBtn.click();
         return this;
+    }
+
+    private void selectOptionInSelect(WebElement select, WebElement option){
+        select = new WebDriverWait(driver, 10)
+                .until(ExpectedConditions.visibilityOf(select));
+        select.click();
+        option = new WebDriverWait(driver, 10)
+                .until(ExpectedConditions.visibilityOf(option));
+        option.click();
     }
 
 }
