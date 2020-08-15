@@ -3,6 +3,7 @@ package test;
 import ICanWin.CreatNewPasteOnPastebin;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -13,6 +14,7 @@ public class ICanWinTest {
     @BeforeMethod(alwaysRun = true)
     public void browserSetup(){
         driver = new ChromeDriver();
+        driver.manage().window().maximize();
     }
     @Test
     public void pasteOnPastebin() {

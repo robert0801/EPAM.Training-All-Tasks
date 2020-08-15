@@ -16,8 +16,8 @@ public class BringItOnTest {
 
     @BeforeMethod(alwaysRun = true)
     public void browserSetup(){
-
         driver = new ChromeDriver();
+        driver.manage().window().maximize();
     }
     @Test
     public void pasteOnPastebin() {
