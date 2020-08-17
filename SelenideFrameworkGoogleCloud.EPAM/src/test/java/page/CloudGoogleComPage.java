@@ -15,7 +15,6 @@ public class CloudGoogleComPage{
         $(By.xpath("//input[@type='text']")).setValue("Google Cloud Platform Pricing Calculator").pressEnter();
         $(By.xpath("//a[@data-ctorig='https://cloud.google.com/products/calculator']")).waitUntil(Condition.visible, 10000).click();
         logger.info("Open web site with Cloud Calculator");
-
         return new PageWithSettings();
     }
 }

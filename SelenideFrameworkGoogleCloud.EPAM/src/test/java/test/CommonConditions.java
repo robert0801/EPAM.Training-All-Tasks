@@ -19,7 +19,6 @@ public class CommonConditions {
     @BeforeTest()
     public static void setUp()
     {
-        //Dimension dimension = new Dimension(1920, 1080);
         Configuration.browserSize = "1920x1080";
         Configuration.screenshots = false;
         baseUrl = "https://cloud.google.com";

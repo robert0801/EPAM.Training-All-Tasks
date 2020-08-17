@@ -22,22 +22,22 @@ public class PageWithSettings{
 
     private By numberOfInstances = By.xpath("//input[contains(@ng-model,'quantity')]");
     private By listOperatingSystem = By.xpath("//label[text()='Operating System / Software']/../md-select");
-    String typeOperatingSystem = "//md-option[@value='%s']";
+    private String typeOperatingSystem = "//md-option[@value='%s']";
     private By listMachineClass = By.xpath("//md-select[@placeholder='VM Class']");
-    String typeMachineClass = "//md-select-menu[@style=contains(text(), '')]/descendant::md-option[@value='%s']";
+    private String typeMachineClass = "//md-select-menu[@style=contains(text(), '')]/descendant::md-option[@value='%s']";
     private By listMachineType = By.xpath("//md-select[@placeholder='Instance type']");
-    String typeMachineType = "//md-option[@value='CP-COMPUTEENGINE-VMIMAGE-%s']";
+    private String typeMachineType = "//md-option[@value='CP-COMPUTEENGINE-VMIMAGE-%s']";
     private By addGPU = By.xpath("//*[contains(@ng-model,'GPU')]");
     private By listNumberOfGPU = By.xpath("//md-select[@placeholder='Number of GPUs']");
-    String typeNumberOfGPU = "//div[normalize-space()='%s']/parent::md-option";
+    private String typeNumberOfGPU = "//div[normalize-space()='%s']/parent::md-option";
     private By listGPUType = By.xpath("//md-select[@placeholder='GPU type']");
-    String typeGPUType = "//md-option[@value='%s']";
+    private String typeGPUType = "//md-option[@value='%s']";
     private By listLocalSSD = By.xpath("//md-select[@placeholder='Local SSD']");
-    String typeLocalSSD = "//div[normalize-space()='%s GB']/parent::md-option";
+    private String typeLocalSSD = "//div[normalize-space()='%s GB']/parent::md-option";
     private By listDatacenterLocation = By.xpath("//md-select[@placeholder='Datacenter location']");
-    String typeDatacenterLocation = "//md-select-menu[@class='md-overflow']/descendant::div[contains(text(), '%s')]/parent::md-option";
+    private String typeDatacenterLocation = "//md-select-menu[@class='md-overflow']/descendant::div[contains(text(), '%s')]/parent::md-option";
     private By listCommittedUsage = By.xpath("//md-select[@placeholder='Committed usage']");
-    String typeCommittedUsage = "//md-select-menu[contains(@style, 'transform-origin')]//div[text()='%s']/parent::md-option";
+    private String typeCommittedUsage = "//md-select-menu[contains(@style, 'transform-origin')]//div[text()='%s']/parent::md-option";
     private By buttonAddToEstimate = By.xpath("//button[@aria-label='Add to Estimate']");
     private By buttonEmailEstimate = By.xpath("//button[@id='email_quote']");
     private By buttonInputMail = By.xpath("//input[@type='email']");
@@ -105,7 +105,6 @@ public class PageWithSettings{
         $(buttonInputMail).waitUntil(visible, 10000);
         logger.info("Create calculator on page with some settings");
         return this;
-
     }
 
     public PageWithSettings createNewTab(){
