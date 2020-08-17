@@ -21,64 +21,62 @@ public class PageWithSettings extends AbstractForCloudGoogle{
     }
 
     @FindBy(xpath = "//input[contains(@ng-model,'quantity')]")
-    WebElement numberOfInstances;
+    private WebElement numberOfInstances;
 
     @FindBy(xpath = "//label[text()='Operating System / Software']/../md-select")
-    WebElement listOperatingSystem;
+    private WebElement listOperatingSystem;
 
-    String typeOperatingSystem = "//md-option[@value='%s']";
+    private String typeOperatingSystem = "//md-option[@value='%s']";
 
     @FindBy(xpath = "//md-select[@placeholder='VM Class']")
-    WebElement listMachineClass;
+    private WebElement listMachineClass;
 
-    String typeMachineClass = "//md-select-menu[@style=contains(text(), '')]/descendant::md-option[@value='%s']";
+    private String typeMachineClass = "//md-select-menu[@style=contains(text(), '')]/descendant::md-option[@value='%s']";
 
     @FindBy(xpath = "//md-select[@placeholder='Instance type']")
-    WebElement listMachineType;
+    private WebElement listMachineType;
 
-    String typeMachineType = "//md-option[@value='CP-COMPUTEENGINE-VMIMAGE-%s']";
+    private String typeMachineType = "//md-option[@value='CP-COMPUTEENGINE-VMIMAGE-%s']";
 
     @FindBy(xpath = "//*[contains(@ng-model,'GPU')]")
-    WebElement addGPU;
+    private WebElement addGPU;
 
     @FindBy(xpath = "//md-select[@placeholder='Number of GPUs']")
-    WebElement listNumberOfGPU;
+    private WebElement listNumberOfGPU;
 
-    String typeNumberOfGPU = "//div[normalize-space()='%s']/parent::md-option";
+    private String typeNumberOfGPU = "//div[normalize-space()='%s']/parent::md-option";
 
     @FindBy(xpath = "//md-select[@placeholder='GPU type']")
-    WebElement listGPUType;
+    private WebElement listGPUType;
 
-    String typeGPUType = "//md-option[@value='%s']";
+    private String typeGPUType = "//md-option[@value='%s']";
 
     @FindBy(xpath = "//md-select[@placeholder='Local SSD']")
-    WebElement listLocalSSD;
+    private WebElement listLocalSSD;
 
-    String typeLocalSSD = "//div[normalize-space()='%s GB']/parent::md-option";
+    private String typeLocalSSD = "//div[normalize-space()='%s GB']/parent::md-option";
 
     @FindBy(xpath = "//md-select[@placeholder='Datacenter location']")
-    WebElement listDatacenterLocation;
+    private WebElement listDatacenterLocation;
 
-    String typeDatacenterLocation = "//md-select-menu[@class='md-overflow']/descendant::div[contains(text(), '%s')]/parent::md-option";
+    private String typeDatacenterLocation = "//md-select-menu[@class='md-overflow']/descendant::div[contains(text(), '%s')]/parent::md-option";
 
     @FindBy(xpath = "//md-select[@placeholder='Committed usage']")
-    WebElement listCommittedUsage;
+    private WebElement listCommittedUsage;
 
-
-    String typeCommittedUsage = "//md-select-menu[contains(@style, 'transform-origin')]//div[text()='%s']/parent::md-option";
+    private String typeCommittedUsage = "//md-select-menu[contains(@style, 'transform-origin')]//div[text()='%s']/parent::md-option";
 
     @FindBy(xpath = "//button[@aria-label='Add to Estimate']")
-    WebElement buttonAddToEstimate;
+    private WebElement buttonAddToEstimate;
 
     @FindBy(xpath = "//button[@id='email_quote']")
-    WebElement buttonEmailEstimate;
+    private WebElement buttonEmailEstimate;
 
     @FindBy(xpath = "//input[@type='email']")
-    WebElement buttonInputMail;
+    private WebElement buttonInputMail;
 
     @FindBy(xpath = "//button[@aria-label='Send Email']")
-    WebElement buttonSendEmail;
-
+    private WebElement buttonSendEmail;
 
     public PageWithSettings checkNumberOfInstances(Calculator calculator){
 
@@ -104,7 +102,6 @@ public class PageWithSettings extends AbstractForCloudGoogle{
     public PageWithSettings checkMachineType(Calculator calculator){
         click(listMachineType);
         clickByCheckOption(typeMachineType, calculator.getTypeMachineType());
-
         return this;
     }
 
@@ -182,7 +179,6 @@ public class PageWithSettings extends AbstractForCloudGoogle{
                 .replaceAll("[^0-9.]", "");
 
         priceOnCalculatorPage = Double.parseDouble(s);
-
     }
 
 
@@ -202,10 +198,6 @@ public class PageWithSettings extends AbstractForCloudGoogle{
         WebElement element = new WebDriverWait(driver, 10)
                 .until(ExpectedConditions.visibilityOfElementLocated(By.xpath(String.format(listOfOption, option))));
         element.sendKeys(Keys.ENTER);
-
     }
-
-
-
 
 }

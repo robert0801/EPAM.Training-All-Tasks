@@ -15,13 +15,15 @@ import java.util.concurrent.TimeUnit;
 public class CommonConditions {
 
 
+    private static final int VALUE_TIMEOUT = 20;
     protected WebDriver driver;
 
     @BeforeTest()
     public void setUp()
     {
         driver = DriverSingleton.getDriver();
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(VALUE_TIMEOUT, TimeUnit.SECONDS);
+        driver.manage().timeouts().pageLoadTimeout(VALUE_TIMEOUT, TimeUnit.SECONDS);
         PageFactory.initElements(driver, this);
         Dimension dimension = new Dimension(1920, 1000);
         driver.manage().window().setSize(dimension);

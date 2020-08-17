@@ -15,8 +15,7 @@ import org.apache.logging.log4j.Logger;
 public class GenerateMailPage extends AbstractForCloudGoogle{
 
     @FindBy(xpath = "//input[@id='mail_address']")
-    WebElement mailAddress;
-
+    private WebElement mailAddress;
 
     public static Double priceOnGenerateMailPage;
     public static String generateMail;
@@ -37,7 +36,6 @@ public class GenerateMailPage extends AbstractForCloudGoogle{
         if (checkCopyMail) {
             generateMail = mailAddress.getAttribute("value");
         }
-
         driver.switchTo().window(PageWithSettings.tab.get(0));
         logger.info("Generate email");
         return this;
@@ -46,26 +44,21 @@ public class GenerateMailPage extends AbstractForCloudGoogle{
 
     public GenerateMailPage clickToOpenMail() {
         driver.switchTo().window(PageWithSettings.tab.get(1));
-
         WebElement mailPage = new WebDriverWait(driver,20)
                 .until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='mail_messages_content']")));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", mailPage);
-
         mailPage.click();
         logger.info("The email was success open");
         return this;
     }
 
     public void getPriceOnGenerateMailPage() {
-
         WebElement priceCalculatorOnMailPage = new WebDriverWait(driver, 10)
                 .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h3[contains(text(), 'USD')]")));
-
         String s = priceCalculatorOnMailPage
                 .getText()
                 .replace("USD ", "")
                 .replaceAll("[^0-9.]","");
-
         priceOnGenerateMailPage = Double.parseDouble(s);
     }
 }
