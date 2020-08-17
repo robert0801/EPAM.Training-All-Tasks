@@ -1,11 +1,9 @@
 package BringItOn;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class CreatNewPasteOnPastebin extends AbstractClassForPastebin{
@@ -18,25 +16,25 @@ public class CreatNewPasteOnPastebin extends AbstractClassForPastebin{
 
 
     @FindBy (xpath = "//textarea[@name='PostForm[text]']")
-    WebElement areaForNewPaste;
+    private WebElement areaForNewPaste;
 
     @FindBy (xpath = "//select[@name='PostForm[expiration]']/parent::div")
-    WebElement pasteExpiration;
+    private WebElement pasteExpiration;
 
     @FindBy (xpath = "//li[text()='10 Minutes']")
-    WebElement pasteExpiration10Minutes;
+    private WebElement pasteExpiration10Minutes;
 
     @FindBy (xpath = "//select[@name='PostForm[format]']/parent::div")
-    WebElement syntaxHighlighting;
+    private WebElement syntaxHighlighting;
 
     @FindBy (xpath = "//li[text()='Bash']")
-    WebElement syntaxHighlightingBash;
+    private WebElement syntaxHighlightingBash;
 
     @FindBy (xpath = "//input[@name='PostForm[name]']")
-    WebElement pasteNameForNewPaste;
+    private WebElement pasteNameForNewPaste;
 
     @FindBy(xpath = "//button[contains(text(), Create)]")
-    WebElement createNewPasteBtn;
+    private WebElement createNewPasteBtn;
 
     public CreatNewPasteOnPastebin(WebDriver driver) {
         super(driver);
@@ -48,13 +46,13 @@ public class CreatNewPasteOnPastebin extends AbstractClassForPastebin{
     }
 
     public CreatNewPasteOnPastebin syntaxHighlighting() {
-        selectOptionInSelect(syntaxHighlighting, syntaxHighlightingBash);
+        checkOptionInSelect(syntaxHighlighting, syntaxHighlightingBash);
         return this;
     }
 
 
     public CreatNewPasteOnPastebin checkThe10Minutes() {
-        selectOptionInSelect(pasteExpiration, pasteExpiration10Minutes);
+        checkOptionInSelect(pasteExpiration, pasteExpiration10Minutes);
         return this;
     }
 
@@ -64,7 +62,7 @@ public class CreatNewPasteOnPastebin extends AbstractClassForPastebin{
         return this;
     }
 
-    private void selectOptionInSelect(WebElement select, WebElement option){
+    private void checkOptionInSelect(WebElement select, WebElement option){
         select = new WebDriverWait(driver, 10)
                 .until(ExpectedConditions.visibilityOf(select));
         select.click();

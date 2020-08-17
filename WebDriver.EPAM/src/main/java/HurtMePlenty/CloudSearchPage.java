@@ -8,7 +8,7 @@ import java.util.List;
 
 public class CloudSearchPage extends AbstractClassPage {
     @FindBy (xpath = "//a[@data-ctorig='https://cloud.google.com/products/calculator']")
-    List<WebElement> searchResultsCloud;
+    private List<WebElement> searchResultsCloud;
 
       public CloudSearchPage(WebDriver driver) {
         super(driver);

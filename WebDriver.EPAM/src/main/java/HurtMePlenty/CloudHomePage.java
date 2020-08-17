@@ -8,17 +8,17 @@ import org.openqa.selenium.support.FindBy;
 
 public class CloudHomePage extends AbstractClassPage{
 
-    private String webSite = "https://cloud.google.com/";
+    private final String WEB_SITE = "https://cloud.google.com/";
 
     @FindBy(xpath = "//input[@name='q']")
-    WebElement searchLineCloud;
+    private WebElement searchLineCloud;
 
     public CloudHomePage(WebDriver driver) {
         super(driver);
     }
 
     public CloudSearchPage cloudStartPage() {
-        driver.get(webSite);
+        driver.get(WEB_SITE);
         searchLineCloud.sendKeys("Google Cloud Platform Pricing Calculator");
         searchLineCloud.sendKeys(Keys.ENTER);
         return new CloudSearchPage(driver);

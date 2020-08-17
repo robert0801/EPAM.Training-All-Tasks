@@ -14,7 +14,7 @@ public class GenerateMailPage extends AbstractForCloudGoogle{
     public static String generateMail;
 
     @FindBy(xpath = "//input[@id='mail_address']")
-    WebElement mailAddress;
+    private WebElement mailAddress;
 
     public GenerateMailPage(WebDriver driver) {
         super(driver);

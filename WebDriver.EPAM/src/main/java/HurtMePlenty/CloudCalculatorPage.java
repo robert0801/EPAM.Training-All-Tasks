@@ -17,61 +17,61 @@ import java.util.concurrent.locks.Condition;
 public class CloudCalculatorPage extends AbstractClassPage {
 
     @FindBy(xpath = "//md-tab-item/div[@title='Compute Engine']")
-    WebElement iconComputeEngine;
+    private WebElement iconComputeEngine;
 
     @FindBy(xpath = "//input[contains(@ng-model,'quantity')]")
-    WebElement numberOfInstances;
+    private WebElement numberOfInstances;
 
     @FindBy (xpath = "//md-option[@value='free']")
-    WebElement optionFree;
+    private WebElement optionFree;
 
     @FindBy(xpath = "//label[text()='Operating System / Software']/../md-select")
-    WebElement operatingSystem;
+    private WebElement operatingSystem;
 
     @FindBy(xpath = "//md-select[@placeholder='VM Class']")
-    WebElement machineClass;
+    private WebElement machineClass;
 
     @FindBy(xpath = "//md-select-menu[@style=contains(text(), '')]/descendant::md-option[@value='regular']")
-    WebElement optionRegular;
+    private WebElement optionRegular;
 
     @FindBy(xpath = "//md-select[@placeholder='Instance type']")
-    WebElement machineType;
+    private WebElement machineType;
 
     @FindBy(xpath = "//md-option[@value='CP-COMPUTEENGINE-VMIMAGE-N1-STANDARD-8']")
-    WebElement optionMachineType;
+    private WebElement optionMachineType;
 
     @FindBy(xpath = "//*[contains(@ng-model,'GPU')]")
-    WebElement checkAddGPU;
+    private WebElement checkAddGPU;
 
     @FindBy(xpath = "//md-select[@placeholder='Number of GPUs']")
-    WebElement numberOfGPU;
+    private WebElement numberOfGPU;
 
     @FindBy(xpath = "//div[normalize-space()='1']/parent::md-option")
-    WebElement checkNumberOfGPU;
+    private WebElement checkNumberOfGPU;
 
     @FindBy(xpath = "//md-select[@placeholder='GPU type']")
-    WebElement typeOfGPU;
+    private WebElement typeOfGPU;
 
     @FindBy(xpath = "//md-option[@value='NVIDIA_TESLA_V100']")
-    WebElement checkTypeOfGPU;
+    private WebElement checkTypeOfGPU;
 
     @FindBy(xpath = "//md-select[@placeholder='Local SSD']")
-    WebElement localSSD;
+    private WebElement localSSD;
 
     @FindBy(xpath = "//div[normalize-space()='2x375 GB']/parent::md-option")
-    WebElement typeLocalSSD;
+    private WebElement typeLocalSSD;
 
     @FindBy(xpath = "//md-select[@placeholder='Datacenter location']")
-    WebElement location;
+    private WebElement location;
 
     @FindBy(xpath = "//md-select-menu[@class='md-overflow']/descendant::div[contains(text(), 'Frankfurt')]/parent::md-option")
-    WebElement typeLocation;
+    private WebElement typeLocation;
 
     @FindBy(xpath = "//md-select[@placeholder='Committed usage']")
-    WebElement committedUsage;
+    private WebElement committedUsage;
 
     @FindBy(xpath = "//md-select-menu[contains(@style, 'transform-origin')]//div[text()='1 Year']/parent::md-option")
-    WebElement typeCommittedUsage;
+    private WebElement typeCommittedUsage;
 
     public CloudCalculatorPage(WebDriver driver) {
         super(driver);
@@ -115,7 +115,6 @@ public class CloudCalculatorPage extends AbstractClassPage {
         click(checkNumberOfGPU);
         click(typeOfGPU);
         click(checkTypeOfGPU);
-
         return this;
     }
 
@@ -145,15 +144,14 @@ public class CloudCalculatorPage extends AbstractClassPage {
     }
 
 
-    public void waitForVisibility(WebElement element){
+    private void waitForVisibility(WebElement element){
         new WebDriverWait(driver, 20)
                 .until(ExpectedConditions.visibilityOf(element));
     }
 
-    public void click(WebElement element){
+    private void click(WebElement element){
         waitForVisibility(element);
         element.sendKeys(Keys.ENTER);
     }
-
 }
 

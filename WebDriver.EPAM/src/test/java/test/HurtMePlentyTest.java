@@ -9,15 +9,21 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import HurtMePlenty.*;
-
+import static java.util.concurrent.TimeUnit.*;
 
 
 public class HurtMePlentyTest {
-    WebDriver driver;
+    private WebDriver driver;
+    private final String PATH_CHROME_DRIVER = "src/test/resources/chromedriver.exe";
+    private final int VALUE_TIMEOUT = 20;
 
     @BeforeTest(alwaysRun = true)
     public void openBrowser(){
+        System.setProperty("webdriver.chrome.driver", PATH_CHROME_DRIVER);
         driver = new ChromeDriver();
+        driver.manage().timeouts().pageLoadTimeout(VALUE_TIMEOUT, SECONDS);
+        driver.manage().timeouts().implicitlyWait(VALUE_TIMEOUT, SECONDS);
+        driver.manage().window().maximize();
     }
 
     @Test(description = "Create new calculator")
@@ -84,7 +90,6 @@ public class HurtMePlentyTest {
 
     @AfterTest (alwaysRun = true)
     public void closeBrowser(){
-
         driver.quit();
         driver = null;
     }

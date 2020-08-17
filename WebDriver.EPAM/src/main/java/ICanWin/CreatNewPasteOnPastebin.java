@@ -8,17 +8,18 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class CreatNewPasteOnPastebin extends AbstractClassForPastebin{
     @FindBy (xpath = "//textarea[@name='PostForm[text]']")
-    WebElement areaForNewPaste;
+    private WebElement areaForNewPaste;
     @FindBy (xpath = "//select[@name='PostForm[expiration]']/parent::div")
-    WebElement pasteExpiration;
+    private WebElement pasteExpiration;
     @FindBy (xpath = "//li[text()='10 Minutes']")
-    WebElement pasteExpiration10Minutes;
+    private WebElement pasteExpiration10Minutes;
     @FindBy (xpath = "//input[@name='PostForm[name]']")
-    WebElement pasteNameForNewPaste;
+    private WebElement pasteNameForNewPaste;
 
     public CreatNewPasteOnPastebin(WebDriver driver) {
         super(driver);
     }
+
     public CreatNewPasteOnPastebin enterCodeOnPastebin() {
         driver.get(webSite);
         areaForNewPaste.sendKeys("Hello from WebDriver");

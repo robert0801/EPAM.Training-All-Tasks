@@ -10,14 +10,19 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import BringItOn.*;
 
+import java.util.concurrent.TimeUnit;
+
 public class BringItOnTest {
 
     private WebDriver driver;
+    private final String PATH_CHROME_DRIVER = "src/test/resources/chromedriver.exe";
 
     @BeforeMethod(alwaysRun = true)
     public void browserSetup(){
+        System.setProperty("webdriver.chrome.driver", PATH_CHROME_DRIVER);
         driver = new ChromeDriver();
         driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
     @Test
     public void pasteOnPastebin() {

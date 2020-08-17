@@ -6,20 +6,22 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import HardCore.*;
-
-import java.util.concurrent.TimeUnit;
+import static java.util.concurrent.TimeUnit.*;
 
 
 public class HardCoreTest {
-    public WebDriver driver;
+    private WebDriver driver;
+    private final int VALUE_TIMEOUT = 20;
+    private final String PATH_CHROME_DRIVER = "src/test/resources/chromedriver.exe";
 
     @BeforeTest(alwaysRun = true)
     public void openBrowser(){
-        driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        System.setProperty("webdriver.chrome.driver", PATH_CHROME_DRIVER);
         PageFactory.initElements(driver, this);
+        driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(VALUE_TIMEOUT, SECONDS);
         driver.manage().window().maximize();
-                }
+    }
 
     @Test
     public void openPage(){
@@ -59,6 +61,4 @@ public class HardCoreTest {
     driver.quit();
     driver = null;
     }
-
-
 }
