@@ -36,7 +36,7 @@ public class GenerateMailPage{
     }
 
     public GenerateMailPage clickToOpenMail() {
-
+        
         switchTo().window(PageWithSettings.tab.get(1));
         $(By.xpath("//*[@id='mail_messages_content']")).waitWhile(empty, 20000);
         JavascriptExecutor executor = (JavascriptExecutor) WebDriverRunner.getWebDriver();

@@ -4,15 +4,15 @@ import settingscalc.Calculator;
 
 public class CalculatorCreator {
 
-    public static final String NUMBER_OF_INSTANCE = "numberOfInstance";
-    public static final String OPERATING_SYSTEM = "operatingSystem";
-    public static final String MACHINE_CLASS = "machineClass";
-    public static final String MACHINE_TYPE = "machineType";
-    public static final String NUMBER_OF_GPU = "numberOfGPU";
-    public static final String TYPE_GPU = "typeGPU";
-    public static final String LOCAL_SSD = "localSSD";
-    public static final String DATACENTER_LOCATION = "datacenterLocation";
-    public static final String COMMITTED_USAGE = "committedUsage";
+    private static final String NUMBER_OF_INSTANCE = "numberOfInstance";
+    private static final String OPERATING_SYSTEM = "operatingSystem";
+    private static final String MACHINE_CLASS = "machineClass";
+    private static final String MACHINE_TYPE = "machineType";
+    private static final String NUMBER_OF_GPU = "numberOfGPU";
+    private static final String TYPE_GPU = "typeGPU";
+    private static final String LOCAL_SSD = "localSSD";
+    private static final String DATACENTER_LOCATION = "datacenterLocation";
+    private static final String COMMITTED_USAGE = "committedUsage";
 
     public static Calculator creatCalculatorWithSomeProperty(){
         return new Calculator(TestDataReader.getTestData(NUMBER_OF_INSTANCE),

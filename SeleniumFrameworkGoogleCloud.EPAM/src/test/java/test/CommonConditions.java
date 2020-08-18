@@ -14,7 +14,6 @@ import java.util.concurrent.TimeUnit;
 @Listeners({TestListener.class})
 public class CommonConditions {
 
-
     private static final int VALUE_TIMEOUT = 20;
     protected WebDriver driver;
 
