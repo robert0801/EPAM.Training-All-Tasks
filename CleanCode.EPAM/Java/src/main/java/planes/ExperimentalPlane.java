@@ -25,14 +25,20 @@ public class ExperimentalPlane extends Plane{
         this.planeClassificationLevel = planeClassificationLevel;
     }
 
+    public ExperimentalTypes getExperimentalTypePlane() {
+        return experimentalTypePlane;
+    }
+
+    public void setExperimentalTypePlane(ExperimentalTypes experimentalTypePlane) {
+        this.experimentalTypePlane = experimentalTypePlane;
+    }
+
     @Override
     public boolean equals(Object comparedPlane) {
-        if (this == comparedPlane) return true;
-        if (comparedPlane instanceof ExperimentalPlane) return true;
-        if (super.equals(comparedPlane)) return true;
+        if (!super.equals(comparedPlane)) return false;
         ExperimentalPlane experimentalPlane = (ExperimentalPlane) comparedPlane;
-        return comparedPlane == experimentalPlane.experimentalTypePlane
-                && comparedPlane == experimentalPlane.planeClassificationLevel;
+        return experimentalTypePlane == experimentalPlane.getExperimentalTypePlane() &&
+                planeClassificationLevel == experimentalPlane.getPlaneClassificationLevel();
     }
 
     @Override
@@ -44,6 +50,7 @@ public class ExperimentalPlane extends Plane{
     }
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), experimentalTypePlane);
+        return Objects.hash(super.hashCode(), experimentalTypePlane, planeClassificationLevel);
     }
+
 }

@@ -8,8 +8,8 @@ import java.util.Random;
 public class Optional {
     public static void main(String[] args) {
         questions1(30);
-        questions2("C:/learn/Java_EPAM/JAVA.-FUNDAMENTALS-MAIN-TASK/src/OptionalTask1.java", "C:/learn/Java_EPAM/JAVA.-FUNDAMENTALS-MAIN-TASK/src/reverse.java");
-        questions3("C:/learn/Java_EPAM/JAVA.-FUNDAMENTALS-MAIN-TASK/src/GetMonth.java", "C:/learn/Java_EPAM/JAVA.-FUNDAMENTALS-MAIN-TASK/src/reverse2.java");
+        questions2("../../src/main/java/IO/Optional.java", "../../src/main/java/IO/output/questions2-changePublicToPrivate.java");
+        questions3("../../src/main/java/IO/Optional.java", "../../src/main/java/IO/output/questions3-reverse.java");
 
     }
 
@@ -20,7 +20,7 @@ public class Optional {
             randomArray[i] = random.nextInt();
         }
         Arrays.sort(randomArray);
-        try (FileWriter writer = new FileWriter("out/out.txt")){
+        try (FileWriter writer = new FileWriter("../../src/main/java/IO/output/questions1.txt")){
             for (int i = 0; i < randomArray.length; i++){
                 String s = Integer.toString(randomArray[i]);
                 writer.write(s + "\n");
@@ -53,8 +53,6 @@ public class Optional {
 
                 }
             }
-
-
 
         } catch (IOException ex) {
             ex.printStackTrace();

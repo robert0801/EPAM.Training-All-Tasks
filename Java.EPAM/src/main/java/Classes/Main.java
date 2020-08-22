@@ -9,7 +9,6 @@ import java.util.List;
 
 public class Main{
 
-
     public static void main(String[] args) throws IOException{
         ComparatorAbiturient comparatorAbiturient = new ComparatorAbiturient();
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));

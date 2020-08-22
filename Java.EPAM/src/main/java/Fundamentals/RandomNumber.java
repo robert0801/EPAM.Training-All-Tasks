@@ -13,6 +13,7 @@ public class RandomNumber {
         Random random = new Random();
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         List<Integer> number = new ArrayList<>();
+        System.out.println("Введите количество чисел, которые нужно сгенерировать.");
         int countNumber = Integer.parseInt(reader.readLine());
         for (int i = 0; i < countNumber; i++) {
             number.add(random.nextInt());

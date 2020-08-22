@@ -3,10 +3,10 @@ package planes;
 import java.util.Objects;
 
 abstract public class Plane {
-    private String model;
-    private int maxSpeed;
-    private int maxFlightDistance;
-    private int maxLoadCapacity;
+    protected String model;
+    protected int maxSpeed;
+    protected int maxFlightDistance;
+    protected int maxLoadCapacity;
 
     public Plane(String model, int maxSpeed, int maxFlightDistance, int maxLoadCapacity) {
         this.model = model;
@@ -42,14 +42,14 @@ abstract public class Plane {
     }
 
     @Override
-    public boolean equals(Object planeForComparison) {
-        if (this == planeForComparison) return true;
-        if (!(planeForComparison instanceof Plane)) return false;
-        Plane plane = (Plane) planeForComparison;
-        return maxSpeed == plane.maxSpeed &&
-                maxFlightDistance == plane.maxFlightDistance &&
-                maxLoadCapacity == plane.maxLoadCapacity &&
-                Objects.equals(model, plane.model);
+    public boolean equals(Object comparedPlane) {
+        if (this == comparedPlane) return true;
+        if (comparedPlane == null || getClass() != comparedPlane.getClass()) return false;
+        Plane plane = (Plane) comparedPlane;
+        return maxSpeed == plane.getMaxSpeed() &&
+                maxFlightDistance == plane.getMaxFlightDistance() &&
+                maxLoadCapacity == plane.getMaxLoadCapacity() &&
+                model.equals(plane.getModel());
     }
 
     @Override

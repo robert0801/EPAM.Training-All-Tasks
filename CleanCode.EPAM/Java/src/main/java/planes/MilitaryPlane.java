@@ -1,7 +1,6 @@
 package planes;
 
 import models.MilitaryType;
-
 import java.util.Objects;
 
 public class MilitaryPlane extends Plane{
@@ -26,11 +25,9 @@ public class MilitaryPlane extends Plane{
 
     @Override
     public boolean equals(Object comparedPlane) {
-        if (this == comparedPlane) return true;
-        if (comparedPlane instanceof MilitaryPlane) return true;
-        if (super.equals(comparedPlane)) return true;
+        if (!super.equals(comparedPlane)) return false;
         MilitaryPlane militaryPlane = (MilitaryPlane) comparedPlane;
-        return militaryTypePlane == militaryPlane.militaryTypePlane;
+        return militaryTypePlane == militaryPlane.getMilitaryTypePlane();
     }
 
     @Override

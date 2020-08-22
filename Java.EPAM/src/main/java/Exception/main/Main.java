@@ -7,7 +7,7 @@ import static Exception.main.Subject.*;
 
 
 
-public class main {
+public class Main {
     public static void main(String[] args) throws ExceptionClass {
         Student student1 = new Student(new HashMap<Subject, Integer>() {{
             put(BIOLOGY, 8);

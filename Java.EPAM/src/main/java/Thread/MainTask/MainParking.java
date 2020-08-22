@@ -2,7 +2,7 @@ package Thread.MainTask;
 
 import java.util.concurrent.Semaphore;
 
-public class Parking {
+public class MainParking {
     public static void main(String[] args) {
         Semaphore parkingPlace = new Semaphore(3);
 

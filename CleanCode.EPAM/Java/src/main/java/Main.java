@@ -1,5 +1,8 @@
 import airport.Airport;
+import models.ClassificationLevel;
+import models.ExperimentalTypes;
 import models.MilitaryType;
+import planes.ExperimentalPlane;
 import planes.MilitaryPlane;
 import planes.PassengerPlane;
 import planes.Plane;

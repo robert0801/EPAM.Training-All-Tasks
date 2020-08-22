@@ -1,6 +1,10 @@
 package IO;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 
 public class Main {
@@ -10,18 +14,23 @@ public class Main {
     static int sumCountDirectory = 0;
     static ArrayList<String> listWithNameFiles = new ArrayList<>();
 
-    public static void main(String[] args) {
-        File dir = new File("C:/Фото");
+    public static void main(String[] args) throws IOException {
+        String workingDirectory;
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Введите директорию или файл");
+        workingDirectory = reader.readLine();
+        File dir = new File(workingDirectory);
 
         if (dir.isDirectory()) getTreeDirectory(dir);
 
-        else {
+        else if (getFileExtension(dir).equals("txt")){
             getInformationAboutTree(dir);
         }
+        else System.out.println("Указанный файл не имеет расширения .txt");
     }
 
 
-    static void getTreeDirectory(File dir) {
+    private static void getTreeDirectory(File dir) {
         for (File file : dir.listFiles()) {
             if (file.isFile())
                 print(file);
@@ -36,7 +45,7 @@ public class Main {
         counter2--;
     }
 
-    static void print(File file) {
+    private static void print(File file) {
         if (file.isFile()) {
             for (int i = 0; i < counter2; i++) {
                 System.out.print(" ");
@@ -57,7 +66,7 @@ public class Main {
         }
     }
 
-    static void getInformationAboutTree(File dir) {
+    private static void getInformationAboutTree(File dir) {
         int countFile = 0;
         int countDirectory = 0;
         String s = dir.getParent();
@@ -74,11 +83,10 @@ public class Main {
         System.out.println("Среднее количество файлов в папке " + getMiddleFilesInDirectory(file));
         System.out.println("Среднее длина имени файла " + getMiddleLengthNameFiles(file));
 
-
     }
 
 
-    static double getMiddleFilesInDirectory(File dir) {
+    private static double getMiddleFilesInDirectory(File dir) {
 
         for (File file : dir.listFiles()) {
             if (file.isFile()) {
@@ -88,14 +96,13 @@ public class Main {
             {
                     sumCountDirectory++;
                     getMiddleFilesInDirectory(file);
-
                 }
             }
             return (double) sumCountFileInDirectory / sumCountDirectory;
         }
 
 
-    static double getMiddleLengthNameFiles(File dir) {
+    private static double getMiddleLengthNameFiles(File dir) {
         int totalLengthFiles = 0;
 
         for (File file : dir.listFiles()) {
@@ -111,6 +118,12 @@ public class Main {
             totalLengthFiles += lengthFiles.length();
         }
         return (double) totalLengthFiles / listWithNameFiles.size();
+    }
+
+    private static String getFileExtension(File file) {
+        String nameFile = file.getName();
+        int index = nameFile.lastIndexOf('.');
+        return index == -1? "Это папка" : nameFile.substring(index);
     }
 }
 
