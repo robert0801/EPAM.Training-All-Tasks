@@ -97,7 +97,7 @@ public class Main extends ComparableSalad {
         for (Vegetable vegetable : salad){
             if (vegetable.getCalorieOfKilogram() >= minCalorie && vegetable.getCalorieOfKilogram() <= maxCalorie){
                 flagOfCorrectCalorie = true;
-                System.out.println(vegetable.getClass().getSimpleName());
+                System.out.println(vegetable.getClass().getSimpleName() + " находится в указанном диапозоне каллорийности");
             }
         }
         if (flagOfCorrectCalorie == false) {

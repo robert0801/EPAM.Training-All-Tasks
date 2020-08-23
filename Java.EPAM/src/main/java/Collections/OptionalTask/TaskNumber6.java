@@ -13,7 +13,7 @@ import java.util.List;
 public class TaskNumber6 {
     public static void main(String[] args) throws IOException {
         String lineFromFile;
-        BufferedReader reader = new BufferedReader(new FileReader("../../src/main/java/Collections/OptionalTask/output/"));
+        BufferedReader reader = new BufferedReader(new FileReader("../../src/main/java/Collections/OptionalTask/output/file.txt"));
 
         List<String> textFromFile = new ArrayList<String>();
         while ((lineFromFile = reader.readLine()) != null){
