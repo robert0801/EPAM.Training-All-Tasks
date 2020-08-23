@@ -1,6 +1,6 @@
-package Fundamentals;
+/*Упорядочить строки (столбцы) матрицы в порядке возрастания значений элементов k-го строки.*/
 
-import org.w3c.dom.ls.LSOutput;
+package Fundamentals;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -34,7 +34,6 @@ public class OptionalTask2 {
 
         System.out.println();
 
-        System.out.println("Матрица после сортировки");
         for (int j = 0; j < N; j++){
             for (int k = j + 1; k < N; k++) {
                 if (array[numLine][j] > array[numLine][k]) {
@@ -47,6 +46,7 @@ public class OptionalTask2 {
             }
         }
 
+        System.out.println("Матрица после сортировки по возрастанию " + ++numLine + " строки.");
         for (int i = 0; i < N; i++){
             for (int j = 0; j < N; j++){
                 System.out.print(array[i][j] + " ");

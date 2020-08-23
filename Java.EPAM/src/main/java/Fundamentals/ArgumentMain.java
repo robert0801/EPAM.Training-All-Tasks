@@ -1,3 +1,5 @@
+/*Отобразить в окне консоли аргументы командной строки в обратном порядке.*/
+
 package Fundamentals;
 
 public class ArgumentMain {

@@ -5,13 +5,13 @@ import java.util.concurrent.TimeUnit;
 
 public class Car extends Thread {
     private String name;
-    Semaphore parkingPlace;
+    private Semaphore parkingPlace;
 
-    public Car(String name, Semaphore semaphore) {
+    public Car(String name, Semaphore semaphore) throws InterruptedException {
         this.name = name;
         this.parkingPlace = semaphore;
+        this.join();
     }
-
 
     public String getNameCar() {
         return name;

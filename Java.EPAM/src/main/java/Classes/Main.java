@@ -1,3 +1,10 @@
+/*4. Abiturient: id, Фамилия, Имя, Отчество, Адрес, Телефон, Оценки.
+Создать массив объектов. Вывести:
+a) список абитуриентов, имеющих неудовлетворительные оценки;
+b) список абитуриентов, у которых сумма баллов выше заданной;
+c) выбрать заданное число n абитуриентов, имеющих самую высокую сумму баллов (вывести также полный список абитуриентов, имеющих полупроходную сумму).
+*/
+
 package Classes;
 
 import java.io.BufferedReader;
@@ -30,7 +37,7 @@ public class Main{
         abiturientsList.add(Cvetkov);
         abiturientsList.add(Golub);
 
-        System.out.println("Введите значение неудавлетворительной оценки");
+        System.out.println("Введите значение неудавлетворительной оценки (0-10)");
         int minGrade = Integer.parseInt(reader.readLine());
 
         System.out.println("Список студентов, имеющих оценку ниже " + minGrade);
@@ -43,7 +50,7 @@ public class Main{
             }
         }
 
-        System.out.println("Введите значение высокого среднего бала");
+        System.out.println("Введите значение высокого среднего бала (0-10)");
         double hightGrade = Double.parseDouble(reader.readLine());
         System.out.println("Список студентов, имеющих средний бал выше среднего ");
         for (Abiturient abiturient : abiturientsList){

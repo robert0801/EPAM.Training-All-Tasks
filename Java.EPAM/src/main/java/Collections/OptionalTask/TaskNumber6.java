@@ -1,3 +1,6 @@
+/* Ввести строки из файла, записать в список ArrayList.
+Выполнить сортировку строк, используя метод sort() из класса Collections.*/
+
 package Collections.OptionalTask;
 
 import java.io.BufferedReader;

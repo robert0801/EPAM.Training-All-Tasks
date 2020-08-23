@@ -17,8 +17,6 @@ public class Group extends Faculty{
         this.studentsInGroup = studentsInGroup;
     }
 
-
-
     public double averageMarkOnSubjectInGroup(Subject subject) throws ExceptionClass {
         if (studentsInGroup.isEmpty()) throw new ExceptionClass("В группе " + getNameGroup() + " нет студетов");
         for (Student student : studentsInGroup){
@@ -48,9 +46,6 @@ public class Group extends Faculty{
     public ArrayList<Student> getStudentsInGroup() {
         return studentsInGroup;
     }
-
-
-
 
 }
 

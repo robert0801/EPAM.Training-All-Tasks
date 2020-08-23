@@ -8,11 +8,11 @@ import java.sql.SQLOutput;
 import java.util.ArrayList;
 
 public class Main {
-    static int counter = 1;
-    static int counter2 = 0;
-    static int sumCountFileInDirectory = 0;
-    static int sumCountDirectory = 0;
-    static ArrayList<String> listWithNameFiles = new ArrayList<>();
+    private static int counter = 1;
+    private static int counter2 = 0;
+    private static int sumCountFileInDirectory = 0;
+    private static int sumCountDirectory = 0;
+    private static ArrayList<String> listWithNameFiles = new ArrayList<>();
 
     public static void main(String[] args) throws IOException {
         String workingDirectory;
@@ -84,7 +84,6 @@ public class Main {
         System.out.println("Среднее длина имени файла " + getMiddleLengthNameFiles(file));
 
     }
-
 
     private static double getMiddleFilesInDirectory(File dir) {
 

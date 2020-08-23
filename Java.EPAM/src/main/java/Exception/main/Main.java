@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import static Exception.main.Subject.*;
 
-
-
 public class Main {
     public static void main(String[] args) throws ExceptionClass {
         Student student1 = new Student(new HashMap<Subject, Integer>() {{

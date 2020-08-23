@@ -17,7 +17,7 @@ public class Student extends Group{
         this.name = name;
 
         if (rating.size() == 0) {
-            throw new ExceptionClass("У студента " + name + " отсутсвуют предметы");
+            throw new ExceptionClass("У студента " + getName() + " отсутсвуют предметы");
         }
 
         for (Map.Entry<Subject, Integer> iteratorStudent : rating.entrySet()) {

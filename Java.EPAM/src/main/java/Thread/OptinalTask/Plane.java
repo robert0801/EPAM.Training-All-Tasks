@@ -7,9 +7,10 @@ public class Plane extends Thread{
     private Semaphore runway;
     private String namePlane;
 
-    public Plane(Semaphore runway, String namePlane) {
+    public Plane(Semaphore runway, String namePlane) throws InterruptedException {
         this.runway = runway;
         this.namePlane = namePlane;
+        this.join();
     }
 
     public String getNamePlane() {

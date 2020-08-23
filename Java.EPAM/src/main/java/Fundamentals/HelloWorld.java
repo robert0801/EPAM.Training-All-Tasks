@@ -1,3 +1,5 @@
+/*Приветствовать любого пользователя при вводе его имени через командную строку.*/
+
 package Fundamentals;
 
 import java.io.BufferedReader;

@@ -13,7 +13,8 @@ public class Optional {
 
     }
 
-    public static void questions1(int countRandomNumbers){
+    /*Создать и заполнить файл случайными целыми числами. Отсортировать содержимое файла по возрастанию.*/
+    private static void questions1(int countRandomNumbers){
         Random random = new Random();
         int[] randomArray = new int[countRandomNumbers];
         for (int i = 0; i < countRandomNumbers; i++){
@@ -30,7 +31,8 @@ public class Optional {
         }
     }
 
-    public static void questions2(String file, String fileOut){
+    /*Прочитать текст Java-программы и все слова public в объявлении атрибутов и методов класса заменить на слово private.*/
+    private static void questions2(String file, String fileOut){
         String s;
         ArrayList<String> mass = new ArrayList<>();
         String[] massString;
@@ -50,7 +52,6 @@ public class Optional {
 
                 for (String line1 : mass){
                     writer.write(line1 + "\n");
-
                 }
             }
 
@@ -59,7 +60,8 @@ public class Optional {
         }
     }
 
-    public static void questions3(String file, String fileOut){
+    /*Прочитать текст Java-программы и записать в другой файл в обратном порядке символы каждой строки.*/
+    private static void questions3(String file, String fileOut){
         String s;
         try(BufferedReader reader = new BufferedReader(new FileReader(file));
         BufferedWriter writer = new BufferedWriter(new FileWriter(fileOut))){
@@ -69,7 +71,6 @@ public class Optional {
                     writer.write(s.charAt(i));
                     writer.write("\n");
             }
-
             } catch (IOException ex) {
             ex.printStackTrace();
         }

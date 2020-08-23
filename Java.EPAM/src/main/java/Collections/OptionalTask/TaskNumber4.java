@@ -1,3 +1,5 @@
+/*Занести стихотворение в список. Провести сортировку по возрастанию длин строк.*/
+
 package Collections.OptionalTask;
 
 import java.util.Arrays;

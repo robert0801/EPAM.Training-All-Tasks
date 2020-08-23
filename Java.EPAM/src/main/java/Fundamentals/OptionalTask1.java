@@ -1,3 +1,7 @@
+/*1. Найти самое короткое и самое длинное число. Вывести найденные числа и их длину.
+  2. Вывести числа в порядке возрастания (убывания) значений их длины.4
+ */
+
 package Fundamentals;
 
 import java.io.BufferedReader;
@@ -39,8 +43,15 @@ public class OptionalTask1 {
         System.out.println("Самое короткое число " + Integer.parseInt(arrayString[0]) + ", его длина " + arrayString[0].length());
         System.out.println("Самое длинное число " + Integer.parseInt(arrayString[arrayString.length - 1]) + ", его длина " + arrayString[arrayString.length - 1].length());
 
+        System.out.println("Числа в порядке убывания значений их длины.");
         for (int i = arrayString.length - 1; i >= 0; i--){
-            System.out.println(arrayString[i]);
+            System.out.print(arrayString[i] + " ");
+        }
+        System.out.println();
+
+        System.out.println("Числа в порядке возрастания значений их длины.");
+        for (int i = 0; i < arrayString.length; i++){
+            System.out.print(arrayString[i] + " ");
         }
     }
 }

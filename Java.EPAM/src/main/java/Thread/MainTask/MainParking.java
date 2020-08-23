@@ -1,9 +1,12 @@
+/*Автостоянка. Доступно несколько машиномест. На одном месте может находиться только один автомобиль.
+Если все места заняты, то автомобиль не станет ждать больше определенного времени и уедет на другую стоянку.*/
+
 package Thread.MainTask;
 
 import java.util.concurrent.Semaphore;
 
 public class MainParking {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Semaphore parkingPlace = new Semaphore(3);
 
         Car car1 = new Car("Вася", parkingPlace);
@@ -16,7 +19,6 @@ public class MainParking {
         Car car8 = new Car("Оля", parkingPlace);
         Car car9 = new Car("Аня", parkingPlace);
         Car car10 = new Car("Лена", parkingPlace);
-
 
         car1.start();
         car2.start();

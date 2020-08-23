@@ -1,3 +1,5 @@
+/*Вывести заданное количество случайных чисел с переходом и без перехода на новую строку*/
+
 package Fundamentals;
 
 import java.io.BufferedReader;

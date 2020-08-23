@@ -1,3 +1,7 @@
+/*4. Шеф-повар. Определить иерархию овощей. Сделать салат. Подсчитать калорийность.
+Провести сортировку овощей для салата на основе одного из параметров.
+Найти овощи в салате, соответствующие заданному диапазону калорийности.*/
+
 package Collections.MainTask;
 
 import java.io.BufferedReader;
@@ -33,7 +37,7 @@ public class Main extends ComparableSalad {
         System.out.println("Введите вес овоща");
         weight = isDigit();
         if (weight == false) {
-            System.out.println("Введено некорректное значение. Введите заново.");
+            System.out.println("Введено некорректное значение. Введите вес заново.");
             addWeightOfVegetables();
         }
     }
@@ -42,7 +46,7 @@ public class Main extends ComparableSalad {
         try {
             weightSomeVegetable = Double.parseDouble(reader.readLine());
             return true;
-        } catch (NumberFormatException | IOException e) {
+        } catch (IOException e) {
             return false;
         }
     }
@@ -94,7 +98,6 @@ public class Main extends ComparableSalad {
             if (vegetable.getCalorieOfKilogram() >= minCalorie && vegetable.getCalorieOfKilogram() <= maxCalorie){
                 flagOfCorrectCalorie = true;
                 System.out.println(vegetable.getClass().getSimpleName());
-
             }
         }
         if (flagOfCorrectCalorie == false) {
