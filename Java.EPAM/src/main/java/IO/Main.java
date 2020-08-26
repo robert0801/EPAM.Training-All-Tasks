@@ -62,14 +62,14 @@ public class Main {
 
     private static void getTreeDirectory(File dir) throws IOException {
             for (File file : dir.listFiles()) {
-                if (file.isFile()) {
-                    printStructureDirectory(file);
-                }
-                else if (file.isDirectory()) {
+                if (file.isDirectory()) {
                     printStructureDirectory(file);
                     numberOfHyphensBeforeName++;
                     numberOfSpacesBeforeName++;
                     getTreeDirectory(file);
+                }
+                else if (file.isFile()) {
+                    printStructureDirectory(file);
                 }
             }
             numberOfHyphensBeforeName--;
