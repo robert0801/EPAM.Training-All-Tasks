@@ -53,6 +53,7 @@ public class Main {
             try {
                 if (writer != null) {
                     writer.close();
+                    System.out.println("Information add in Java.EPAM/src/main/java/IO/output/Main.txt");
                 }
             } catch (IOException e) {
                 e.printStackTrace();
