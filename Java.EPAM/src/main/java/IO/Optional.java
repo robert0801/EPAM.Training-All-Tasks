@@ -6,10 +6,17 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class Optional {
-    public static void main(String[] args) {
+    private static String pathFile;
+    public static void main(String[] args){
+        pathFile = new File("").getAbsolutePath();
+        int placeOfAppearanceInPath = pathFile.indexOf("Java.EPAM");
+        pathFile = pathFile.substring(0, placeOfAppearanceInPath);
+
         questions1(30);
-        questions2("../../src/main/java/IO/Optional.java", "../../src/main/java/IO/output/questions2-changePublicToPrivate.java");
-        questions3("../../src/main/java/IO/Optional.java", "../../src/main/java/IO/output/questions3-reverse.java");
+        questions2(pathFile + "Java.EPAM/src/main/java/IO/Optional.java",
+                pathFile + "Java.EPAM/src/main/java/IO/output/questions2-changePublicToPrivate.java");
+        questions3(pathFile + "Java.EPAM/src/main/java/IO/Optional.java",
+                 pathFile + "Java.EPAM/src/main/java/IO/output/questions3-reverse.java");
 
     }
 
@@ -21,7 +28,7 @@ public class Optional {
             randomArray[i] = random.nextInt();
         }
         Arrays.sort(randomArray);
-        try (FileWriter writer = new FileWriter("../../src/main/java/IO/output/questions1.txt")){
+        try (FileWriter writer = new FileWriter(pathFile + "Java.EPAM/src/main/java/IO/output/questions1.txt")){
             for (int i = 0; i < randomArray.length; i++){
                 String s = Integer.toString(randomArray[i]);
                 writer.write(s + "\n");

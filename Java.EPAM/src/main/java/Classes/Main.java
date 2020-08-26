@@ -37,7 +37,7 @@ public class Main{
         abiturientsList.add(Cvetkov);
         abiturientsList.add(Golub);
 
-        System.out.println("Введите значение неудавлетворительной оценки (0-10)");
+        System.out.println("Введите значение неудовлетворительной оценки (0-10)");
         int minGrade = Integer.parseInt(reader.readLine());
 
         System.out.println("Список студентов, имеющих оценку ниже " + minGrade);

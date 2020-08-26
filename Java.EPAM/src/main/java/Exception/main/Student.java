@@ -5,7 +5,7 @@ import Exception.exception.*;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Student extends Group{
+public class Student{
     private int sumMark = 0;
     private int quantityMark = 0;
     private HashMap<Subject, Integer> rating;
@@ -16,13 +16,13 @@ public class Student extends Group{
         this.rating = rating;
         this.name = name;
 
-        if (rating.size() == 0) {
-            throw new ExceptionClass("У студента " + getName() + " отсутсвуют предметы");
+        if (rating.isEmpty()) {
+            throw new ExceptionClass("The student " + getName() + " doesn't have any subject.");
         }
 
         for (Map.Entry<Subject, Integer> iteratorStudent : rating.entrySet()) {
             if (iteratorStudent.getValue() > 10 || iteratorStudent.getValue() < 0){
-                throw new ExceptionClass("У студента " + name + " введена неверная оценка");
+                throw new ExceptionClass("The student " + name + " has a incorrect mark in " + iteratorStudent.getKey() + ".");
             }
             this.sumMark += iteratorStudent.getValue();
             this.quantityMark++;
@@ -41,14 +41,12 @@ public class Student extends Group{
         return quantityMark;
     }
 
-
-
     public HashMap<Subject, Integer> getRating() {
         return rating;
     }
 
     public void averageMarkStudent(){
-        System.out.println("Средний бал студента " + this.getName() + " = " + (double) this.getSumMark() / this.getQuantityMark());
+        System.out.println("The middle mark " + this.getName() + " = " + (double) this.getSumMark() / this.getQuantityMark() + ".");
     }
 
 }

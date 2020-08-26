@@ -1,129 +1,135 @@
 package IO;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.sql.SQLOutput;
+import java.io.*;
 import java.util.ArrayList;
 
 public class Main {
-    private static int counter = 1;
-    private static int counter2 = 0;
-    private static int sumCountFileInDirectory = 0;
-    private static int sumCountDirectory = 0;
+    private static int numberOfHyphensBeforeName = 1;
+    private static int numberOfSpacesBeforeName = 0;
     private static ArrayList<String> listWithNameFiles = new ArrayList<>();
+    private static int countFiles = 0;
+    private static int countDirectories = 0;
+    private static int totalLengthNamesOfFiles = 0;
+    private static FileWriter writer;
 
-    public static void main(String[] args) throws IOException {
-        String workingDirectory;
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Введите директорию или файл");
-        workingDirectory = reader.readLine();
-        File dir = new File(workingDirectory);
+    public static void main(String[] args) {
+        String pathFile = new File("").getAbsolutePath();
+        int placeOfAppearanceInPath = pathFile.indexOf("Java.EPAM");
+        pathFile = pathFile.substring(0, placeOfAppearanceInPath) + "Java.EPAM\\src\\main\\java\\IO\\output\\Main.txt";
 
-        if (dir.isDirectory()) getTreeDirectory(dir);
+        try {
+            writer = new FileWriter(pathFile);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+            System.out.println("Insert the path to directory or file.");
+            File workingDirectory = new File(reader.readLine());
+            File parentDir = new File(workingDirectory.getParent());
 
-        else if (getFileExtension(dir).equals("txt")){
-            getInformationAboutTree(dir);
-        }
-        else System.out.println("Указанный файл не имеет расширения .txt");
-    }
-
-
-    private static void getTreeDirectory(File dir) {
-        for (File file : dir.listFiles()) {
-            if (file.isFile())
-                print(file);
-            else if (file.isDirectory()) {
-                print(file);
-                counter++;
-                counter2++;
-                getTreeDirectory(file);
+            if (workingDirectory.isFile() || workingDirectory.isDirectory()) {
+                if (workingDirectory.isFile()) {
+                    if (getFileExtension(workingDirectory).equals(".txt")) {
+                        getInformationAboutTree(parentDir);
+                        try {
+                            writer.write("Count of directories " + countDirectories + "\n" +
+                                    "Count of files " + countFiles + "\n" +
+                                    "Middle count files in directory " + (double) countFiles/countDirectories + "\n" +
+                                    "Middle length name of file " + getMiddleLengthNamesOfFiles(parentDir));
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } finally {
+                            try {
+                                writer.close();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                    else System.out.println("The specified file does't have a .txt extension.");
+                } else getTreeDirectory(workingDirectory);
+            }
+            else System.out.println("This path does't exist.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (writer != null) {
+                    writer.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
-        counter--;
-        counter2--;
     }
 
-    private static void print(File file) {
-        if (file.isFile()) {
-            for (int i = 0; i < counter2; i++) {
-                System.out.print(" ");
-            }
-            for (int i = 0; i < counter; i++) {
-                System.out.print("-");
-            }
-            System.out.println(" " + file.getName());
-        } else if (file.isDirectory()) {
-            for (int i = 0; i < counter2; i++) {
-                System.out.print(" ");
-            }
-            System.out.print("|");
-            for (int i = 0; i < counter; i++) {
-                System.out.print("-");
-            }
-            System.out.println(" " + file.getName());
-        }
-    }
-
-    private static void getInformationAboutTree(File dir) {
-        int countFile = 0;
-        int countDirectory = 0;
-        String s = dir.getParent();
-        File file = new File(s);
-        File[] fileList = file.listFiles();
-
-        for (int i = 0; i < fileList.length; i++) {
-            if (fileList[i].isFile()) countFile++;
-            else if (fileList[i].isDirectory()) countDirectory++;
-        }
-
-        System.out.println("Количество файлов " + countFile);
-        System.out.println("Количество папок " + countDirectory);
-        System.out.println("Среднее количество файлов в папке " + getMiddleFilesInDirectory(file));
-        System.out.println("Среднее длина имени файла " + getMiddleLengthNameFiles(file));
-
-    }
-
-    private static double getMiddleFilesInDirectory(File dir) {
-
-        for (File file : dir.listFiles()) {
-            if (file.isFile()) {
-                sumCountFileInDirectory++;
-            }
-            else if (file.isDirectory())
-            {
-                    sumCountDirectory++;
-                    getMiddleFilesInDirectory(file);
+    private static void getTreeDirectory(File dir) throws IOException {
+            for (File file : dir.listFiles()) {
+                if (file.isFile()) {
+                    printStructureDirectory(file);
+                }
+                else if (file.isDirectory()) {
+                    printStructureDirectory(file);
+                    numberOfHyphensBeforeName++;
+                    numberOfSpacesBeforeName++;
+                    getTreeDirectory(file);
                 }
             }
-            return (double) sumCountFileInDirectory / sumCountDirectory;
+            numberOfHyphensBeforeName--;
+            numberOfSpacesBeforeName--;
         }
 
+    private static void printStructureDirectory(File file) throws IOException {
+            if (file.isFile()) {
+                for (int i = 0; i < numberOfSpacesBeforeName; i++) {
+                    writer.write(" ");
+                }
+                for (int i = 0; i < numberOfHyphensBeforeName; i++) {
+                    writer.write("-");
+                }
+                writer.write(" " + file.getName() + "\n");
+            } else if (file.isDirectory()) {
+                for (int i = 0; i < numberOfSpacesBeforeName; i++) {
+                    writer.write(" ");
+                }
+                writer.write("|");
+                for (int i = 0; i < numberOfHyphensBeforeName; i++) {
+                    writer.write("-");
+                }
+                writer.write(" " + file.getName() + "\n");
+            }
+        }
 
-    private static double getMiddleLengthNameFiles(File dir) {
-        int totalLengthFiles = 0;
+    private static void getInformationAboutTree(File dir) {
+        for (File file : dir.listFiles()) {
+            if (file.isFile()) countFiles++;
+            else if (file.isDirectory()) {
+                countDirectories++;
+                getInformationAboutTree(file);
+            }
+        }
+    }
 
+    private static double getMiddleLengthNamesOfFiles(File dir){
+        getListWithLengthNamesOfFiles(dir);
+        for (String lengthFiles : listWithNameFiles){
+            totalLengthNamesOfFiles += lengthFiles.length();
+        }
+        return (double) totalLengthNamesOfFiles / listWithNameFiles.size();
+    }
+
+    private static void getListWithLengthNamesOfFiles(File dir) {
         for (File file : dir.listFiles()) {
             if (file.isFile()) {
                 listWithNameFiles.add(file.getName());
             }
             else if (file.isDirectory())
             {
-                getMiddleLengthNameFiles(file);
+                getListWithLengthNamesOfFiles(file);
             }
         }
-        for (String lengthFiles : listWithNameFiles){
-            totalLengthFiles += lengthFiles.length();
-        }
-        return (double) totalLengthFiles / listWithNameFiles.size();
     }
 
     private static String getFileExtension(File file) {
         String nameFile = file.getName();
         int index = nameFile.lastIndexOf('.');
-        return index == -1? "Это папка" : nameFile.substring(index);
+        return nameFile.substring(index);
     }
 }
-
-

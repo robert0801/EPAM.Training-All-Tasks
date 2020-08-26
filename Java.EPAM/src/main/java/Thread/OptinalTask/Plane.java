@@ -21,19 +21,16 @@ public class Plane extends Thread{
     public void run() {
         try {
             runway.acquire();
-            System.out.println(this.getNamePlane() + " начал выход на полосу.");
-            TimeUnit.SECONDS.sleep(1);
-            System.out.println("Полоса \"приняла\" " + this.getNamePlane());
-            TimeUnit.SECONDS.sleep(1);
-            System.out.println(this.getNamePlane() + " взлетел.");
-            TimeUnit.SECONDS.sleep(1);
-            System.out.println("Полоса освободилась");
+            System.out.println(this.getNamePlane() + " entered the runway.");
+            TimeUnit.SECONDS.sleep(3);
+            System.out.println("The runway \"take\" the " + this.getNamePlane());
+            TimeUnit.SECONDS.sleep(3);
+            System.out.println(this.getNamePlane() + " took off.");
+            TimeUnit.SECONDS.sleep(3);
+            System.out.println("The runway is free.");
             runway.release();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-
-
     }
 }
