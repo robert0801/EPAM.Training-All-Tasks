@@ -8,7 +8,6 @@ import java.util.concurrent.LinkedBlockingDeque;
 public class Parking extends Thread{
     private LinkedBlockingDeque<Car> carsThatStayOnParkingPlace = new LinkedBlockingDeque<>();
     private LinkedBlockingDeque<Car> carsThatWaitingParkingPlace = new LinkedBlockingDeque<>();
-    private LinkedBlockingDeque<Car> carsThatLeftParkingPlace = new LinkedBlockingDeque<>();
     private static final int QUANTITY_OF_PARKING_SPACES = 5;
     private int quantityOfFreePlaces = QUANTITY_OF_PARKING_SPACES;
 
@@ -39,7 +38,6 @@ public class Parking extends Thread{
                     if (currentCarThread.getWaitingTime() <= 0){
                         System.out.println("Car #" + carThread.getCarID()
                                 + " don't waits the parking place and drives out.");
-                        carsThatLeftParkingPlace.offer(currentCarThread);
                         carsThatWaitingParkingPlace.remove(currentCarThread);
                     }
                 }
@@ -51,7 +49,6 @@ public class Parking extends Thread{
                 System.out.println("Car #" + carThread.getCarID()
                         + " parking at " + carThread.getParkingTime() + " minutes. Left "
                         + quantityOfFreePlaces + " free parking places.");
-                carsThatLeftParkingPlace.offer(carThread);
                 carsThatWaitingParkingPlace.remove(carThread);
             }
         }
@@ -74,7 +71,6 @@ public class Parking extends Thread{
             if (currentCarThread.getParkingTime() <= 0){
                 System.out.println("Car #" + currentCarThread.getCarID()
                         + " drove after parking.");
-                carsThatLeftParkingPlace.offer(currentCarThread);
                 carsThatStayOnParkingPlace.remove(currentCarThread);
                 quantityOfFreePlaces++;
             }
