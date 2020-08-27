@@ -45,6 +45,7 @@ public class Main {
                     }
                     else System.out.println("The specified file does't have a .txt extension.");
                 } else getTreeDirectory(workingDirectory);
+                System.out.println("Information add in Java.EPAM/src/main/java/IO/output/Main.txt");
             }
             else System.out.println("This path does't exist.");
         } catch (IOException e) {
@@ -53,7 +54,6 @@ public class Main {
             try {
                 if (writer != null) {
                     writer.close();
-                    System.out.println("Information add in Java.EPAM/src/main/java/IO/output/Main.txt");
                 }
             } catch (IOException e) {
                 e.printStackTrace();
