@@ -1,4 +1,4 @@
-package Thread.MainTask;
+package Thread.MainTaskV1;
 
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
